@@ -14,6 +14,18 @@ def home():
 def screening():
     return render_template('1_screening.html', title='Screening')
 
+@app.route('/calculator')
+def calculator():
+    return render_template('2_calculator.html', title='Calculator')
+
+@app.route('/guidance')
+def guidance():
+    return render_template('3_guidance.html', title='Guidance')
+
+@app.route('/template')
+def template():
+    return render_template('4_template.html', title='Template')
+
 
 
 # @app.route('/ROP/<name>')

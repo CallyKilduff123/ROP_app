@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 {% block body_content %}
 <p> Welcome to the ROP baby app </p>
-<!--add buttons to next pages-->
+<a href="{{ url_for('screening') }}" class="btn btn-secondary">Screening Information</a>
+<a href="{{ url_for('calculator') }}" class="btn btn-secondary">Calculate First Screen</a>
+<a href="{{ url_for('guidance') }}" class="btn btn-secondary">ROP Guidance</a>
+<a href="{{ url_for('template') }}" class="btn btn-secondary">Retina Template Diagram</a>
+
+
 {% endblock %}
