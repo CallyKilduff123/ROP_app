@@ -3,13 +3,16 @@ from flask import Flask, url_for, render_template
 # instantiate flask
 app = Flask(__name__)
 
-# PAGE 1 - homepage
+# PAGE 0 - homepage
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html', title='Home')
 
 
+@app.route('/screening')
+def screening():
+    return render_template('1_screening.html', title='Screening')
 
 
 
