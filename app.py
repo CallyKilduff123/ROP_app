@@ -7,27 +7,17 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('layout.html')
+    return render_template('home.html', title='Home')
 
 
 
-@app.route('/ROP/<name>')
-def simple_html_page(name):
-    home_url = url_for('hello_from_flask')
-    return f"""
-    <!doctype>
-    <html>
-        <head>
-            <title>Page1</title>
-        </head>
-        <body>
-            <h1>Name Page</h1>
-            <p> Hello {name}!</p>
-            <hr>
-            <a href="{home_url}">Home Page</a>
-        </body>
-    </html>
-    """
+
+
+# @app.route('/ROP/<name>')
+# def simple_html_page(name):
+#     home_url = url_for('hello_from_flask')
+#     return f"""
+
 
 
 
