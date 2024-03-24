@@ -1,6 +1,23 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<p> fundus template to be downloaded. link back, home </p>
+<!--link to downloadable pdf-->
+<br>
+<div class="center-content">
+ <a href="https://www.rcpch.ac.uk/sites/default/files/2022-12/ROP-examination-record.pdf" class="btn btn-secondary mb-2" target="_blank">Download Screening Documentation Template</a>
+</div>
+<br>
+
+<!--template image-->
+<div>
+    <img src="{{ url_for('static', filename='images/ROP_template.png') }}" class="img-fluid centered-image" alt="Descriptive Alt Text">
+</div>
+<br>
+
+
 <!--add buttons to next pages-->
- <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+ <div class="center-content">
+<a href="{{ url_for('calculator') }}" style="margin-left: 10px;">Back</a>
+    <a href="{{ url_for('home') }}" style="margin-left: 10px;">Next</a>
+</div>
+
 {% endblock %}

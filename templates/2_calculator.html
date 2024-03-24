@@ -1,6 +1,19 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<p> calculator (PMA) and 1st screen date, link back, home and to guidance </p>
-<!--add buttons to next pages-->
- <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+
+<div>
+    <br>
+ <h4>Calculate Postmenstrual Age, Postnatal Age and Date of First Screen</h4>
+    <br>
+    <form method="POST">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="ga_weeks">Gestational Age at Birth (Weeks):</label>
+        <input type="number" id="ga_weeks" name="ga_weeks" required>
+
+        <button type="submit">Calculate</button>
+    </form>
+</div>
+
 {% endblock %}

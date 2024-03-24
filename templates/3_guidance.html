@@ -1,6 +1,67 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<p> RCOphth guidance on ROP screening. Link back, home and to template </p>
-<!--add buttons to next pages-->
- <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+
+<br>
+<div class="center-content">
+ <h5> UK screening of retinopathy of prematurity guidance </h5>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='images/pre_baby_placeholder4.jpeg') }}" class="card-img-top" alt="premature baby in incubator">
+                <div class="card-body">
+                    <p class="card-text">Read the
+                        <a href="https://www.rcpch.ac.uk/sites/default/files/2022-06/ROP%20guideline%20summary%20June.pdf" target="_blank">Summary</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='images/prem_baby_placeholder6.jpeg') }}" class="card-img-top" alt="premature baby in incubator">
+                <div class="card-body">
+                    <p class="card-text">Read the
+                        <a href="https://www.rcpch.ac.uk/sites/default/files/2024-02/Retinopathy_Guidelines_.pdf" target="_blank">Full guidance</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Repeat the structure for the next two cards -->
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='images/prem_baby_placeholder5.jpeg') }}" class="card-img-top" alt="premature baby in incubator">
+                <div class="card-body">
+                    <p class="card-text">Read the
+                        <a href="https://www.rcophth.ac.uk/wp-content/uploads/2022/03/Treating-Retinopathy-of-Prematurity-in-the-UK-Guideline.pdf" target="_blank">Treatment Criteria</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ url_for('static', filename='images/pre_baby_placeholder4.jpeg') }}" class="card-img-top" alt="premature baby in incubator">
+                <div class="card-body">
+                    <p class="card-text">Read the
+                        <a href="https://www.rcpch.ac.uk/sites/default/files/2022-10/UK-screening-retinopathy-prematurity-information-parents-carers.pdf" target="_blank">Parent Information</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <br>
+
+<div class="center-content">
+<a href="{{ url_for('calculator') }}" style="margin-left: 10px;">Back</a>
+    <a href="{{ url_for('template') }}" style="margin-left: 10px;">Next</a>
+</div>
+
 {% endblock %}

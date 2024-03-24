@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+body {
+    background-color: #2E4756;
+    color: white;
+    font-family: Quicksand;
+    padding: 0 20px; /* Adds 20px padding to the left and right of the entire body content */
+    padding-top: 60px;
+}
+
+.navbar {
+    background-color: #253031;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    align-items: left;
+    color: white;
+    z-index: 1030;
+    left: 0; /* Ensure the navbar starts from the very left */
+    right: 0; /* Ensure the navbar extends to the very right */
+}
+
+.container-fluid {
+    position: relative;
+    z-index: 100; /* Ensures navbar stays on top of other content */
+}
+
+
+.centered-image {
+    max-width: 40%; /* Adjust this value to make the image smaller or larger */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Treat the image as a block-level element */
+    margin-left: auto; /* Center the image horizontally */
+    margin-right: auto; /* Center the image horizontally */
+    }
+
+.center-content {
+    display: flex;
+    justify-content: center;
+}
+
+<style>
+    .card-img-top {
+        height: 200px; /* Fixed height for all images */
+        object-fit: cover; /* Maintain aspect ratio, might crop the image */
+        width: 100%; /* Ensure the image fills the card width */
+    }
+
+    .row + .row {
+        margin-top: 15px; /* Adjust the gap between the rows */
+    }
+</style>
+
+
+
