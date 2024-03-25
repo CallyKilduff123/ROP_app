@@ -36,13 +36,19 @@ def template():
 def calculator():
     if request.method == 'POST':
         dob_str = request.form['dob']  # Date of Birth
-        ga_weeks = int(request.form['ga_weeks'])  # Gestational Age at Birth in Weeks
+        today = datetime.today()
 
         # Convert DOB to a datetime object
         dob = datetime.strptime(dob_str, '%Y-%m-%d')
+        # validation
+        if dob > today:
+            error_message = "Please provide a valid DOB. Date of birth can not be a future date."
+            return render_template('error.html', error_message=error_message)
+
+        ga_weeks = int(request.form['ga_weeks'])  # Gestational Age at Birth in Weeks
+        # validation for lower or upper value?
 
         # Calculate Postnatal Age (PNA) in weeks
-        today = datetime.today()
         pna_days = (today - dob).days
         pna_weeks = pna_days // 7
 
@@ -70,11 +76,6 @@ def calculator():
 # def simple_html_page(name):
 #     home_url = url_for('hello_from_flask')
 #     return f"""
-
-
-
-
-
 
 
 
