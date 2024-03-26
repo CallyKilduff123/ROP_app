@@ -5,11 +5,18 @@
     <br>
  <h4>Calculate Postmenstrual Age, Postnatal Age and Date of First Screen</h4>
     <br>
+<!--    definition of a form that will send its data to the server using the POST method when submitted. The POST method sends data securely (no limitat on data length).-->
     <form method="POST">
+<!--        This tag defines a label for the input field. The for attribute links the label to the input element with the id dob.-->
         <label for="dob">Date of Birth:</label>
+<!--        This attribute specifies that the input field is specifically for entering a date. It prompts modern web browsers to display a date picker or calendar interface - YAY-->
+<!--        id = dob: assigns a unique identifier to the input, links it with its label (via 'for') -->
+<!--        name=dob = this input field is sent to the server as part of the request using dob as the key. This lets the server know which part of the submitted data represents the date of birth.-->
         <input type="date" id="dob" name="dob" required>
+<!--        input type = date gives a calendar-->
 
         <label for="ga_weeks">Gestational Age at Birth (Weeks):</label>
+<!--        input field for a numerical value-->
         <input type="number" id="ga_weeks" name="ga_weeks" required>
 
         <button type="submit">Calculate</button>
