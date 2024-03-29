@@ -61,8 +61,11 @@ def calculator():
         # Gestational Age at Birth in Weeks
         # turn entered GA data from request form from string into integer to store
         ga_weeks = int(request.form['ga_weeks'])
+        # GA days default to 0 if not entered
+        ga_days = int(request.form.get('ga_days', 0))
+
         # validation for upper value? - may need to extend this so that only babies <1501g >31weeks are screened
-        if ga_weeks < 22 or ga_weeks > 42:
+        if ga_weeks < 22 or ga_weeks > 42 or ga_days <0 or ga_days > 6:
             error_message = "Please check the provided gestational age."
             return render_template('error.html', error_message=error_message)
             # validation for upper value? - may need to extend this so that only babies <1501g >31weeks are screened
@@ -70,11 +73,18 @@ def calculator():
         # Calculate Postnatal Age (PNA) in weeks
         # today and dob are stored as datetime objects so that the difference can be calculated using .days method
         # convert days to weeks (return integer)
+        total_ga_days = ga_weeks * 7 +ga_days
         pna_days = (today - dob).days
         pna_weeks = pna_days // 7
+        pna_days_remainder = pna_days % 7
+        # keep track of remainder days for more precise calculation of screening date
 
         # Calculate Postmenstrual Age (PMA) in weeks
-        pma_weeks = ga_weeks + pna_weeks
+        total_pma_days = total_ga_days + pna_days
+        # pma_weeks = ga_weeks + pna_weeks
+        pma_weeks = total_pma_days // 7
+        pma_days_remainder = total_pma_days % 7
+
 
         # Determine the date for the first ROP screen
         if ga_weeks < 31:
@@ -85,17 +95,18 @@ def calculator():
             # returns the date when the baby will be 31 weeks
             # same with the pna difference b/w 4 weeks pna date and dob and calculates data
             # then chooses the later date (max)
-            pma_31_date = dob + timedelta(weeks=(31 - ga_weeks))
+            pma_31_date = dob + timedelta(weeks=(31 - ga_weeks), days=-ga_days)
             pna_4_date = dob + timedelta(weeks=4)
             first_screen_date = max(pma_31_date, pna_4_date)
         else:
             # First screen at 36 weeks PMA or 4 weeks PNA, whichever is sooner
-            pma_36_date = dob + timedelta(weeks=(36 - ga_weeks))
+            pma_36_date = dob + timedelta(weeks=(36 - ga_weeks), days=-ga_days)
             pna_4_date = dob + timedelta(weeks=4)
             first_screen_date = min(pma_36_date, pna_4_date)
         # return the calculator results table with the above variables entered based on entered data
         # method strftime formats the date object (first_screen_date) into a string according to specified format
-        return render_template('2b_calculator_results.html', pma_weeks=pma_weeks, pna_weeks=pna_weeks,
+        return render_template('2b_calculator_results.html', pma_weeks=pma_weeks,
+                               pma_days=pma_days_remainder, pna_weeks=pna_weeks, pna_days=pna_days_remainder,
                                first_screen_date=first_screen_date.strftime('%Y-%m-%d'))
     # return the calculator template so that user can post in the form
     return render_template('2_calculator.html', title='Calculator')

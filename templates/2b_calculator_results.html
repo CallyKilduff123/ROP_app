@@ -1,14 +1,29 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
-<div>
-    <p>Postmenstrual Age (PMA): {{ pma_weeks }} weeks</p>
-    <p>Postnatal Age (PNA): {{ pna_weeks }} weeks</p>
-    <p>Date for the First ROP Screen: {{ first_screen_date }}</p>
-    <p>If the baby's gestational age at birth was >31 weeks, they would need to weight <1501g at birth to be eligible for ROP screening  </p>
+<!--    <h4>Results</h4>-->
+<br>
+    <div>
+        <p><strong>Postnatal Age (PNA)</strong> = {{ pna_weeks }} weeks + {{ pna_days }} days</p>
+    </div>
+
+    <div>
+        <p><strong>Postmenstrual Age (PMA)</strong> = {{ pma_weeks }} weeks + {{ pma_days }} days</p>
+    </div>
+
+    <div>
+        <p><strong>Date for the First Screen</strong> = {{ first_screen_date }}</p>
+    </div>
+<br>
+
+<!--    <p>Postmenstrual Age (PMA): {{ pma_weeks }} weeks</p>-->
+<!--    <p>Postnatal Age (PNA): {{ pna_weeks }} weeks</p>-->
+<!--    <p>Date for the First ROP Screen: {{ first_screen_date }}</p>-->
+    <p>If the baby's gestational age at birth was >31 weeks, they would need to weigh <1501g at birth to be eligible for ROP screening  </p>
+<br>
     <a href="{{ url_for('calculator') }}" style="margin-left: 10px;">Back</a>
     <a href="{{ url_for('guidance') }}" style="margin-left: 10px;">Next</a>
-
+<br>
 </div>
 
 {% endblock %}git
