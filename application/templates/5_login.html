@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<div class="login-container center-container">
+<section>
+    <form action="" method="POST" style="display: flex; flex-direction: column; align-items: center;">
+        <p><label for="email">Please login using your secure NHS.net email address: </label></p>
+        <p><input type="email" id="email" name="email" placeholder="yourname@nhs.net" required/></p>
+
+<!--        <p><label for="password">Password: </label></p>-->
+<!--        <p><input type="password" id="password" name="password" required/></p>-->
+        <p><input type="submit" value='Login' /></p>
+    </form>
+</section>
+</div>
+{% endblock %}

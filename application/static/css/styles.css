@@ -39,7 +39,7 @@ body {
     justify-content: center;
 }
 
-<style>
+
     .card-img-top {
         height: 200px; /* Fixed height for all images */
         object-fit: cover; /* Maintain aspect ratio, might crop the image */
@@ -49,7 +49,20 @@ body {
     .row + .row {
         margin-top: 15px; /* Adjust the gap between the rows */
     }
-</style>
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
 
 
 
