@@ -1,8 +1,10 @@
 
 from flask import url_for, render_template, request, redirect, session
 from datetime import datetime, timedelta
+from application.data_access import add_baby_to_db
 
 from application import app
+
 # instantiate flask
 # app = Flask(__name__)
 
@@ -128,14 +130,37 @@ def login():
 def healthcare_homepage():
     return render_template('6_healthcare_homepage.html', title='healthcare_homepage')
 
-@app.route('/add_baby')
+
+@app.route('/add_baby', methods=['GET', 'POST'])
 def add_baby():
+    if request.method == 'POST':
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        gender = request.form['gender']
+        date_of_birth = request.form['date_of_birth']
+        gestational_age_at_birth_weeks = request.form['gestational_age_at_birth_weeks']
+        gestational_age_at_birth_days = request.form['gestational_age_at_birth_days']
+        birthweight_grams = request.form['birthweight_grams']
+
+        # Call add_baby from data_access.py to insert the new baby into the database
+        add_baby_to_db(firstname, lastname, gender, date_of_birth, gestational_age_at_birth_weeks,
+                 gestational_age_at_birth_days, birthweight_grams)
+
+        # Redirect to the baby list page after adding a new baby
+        return redirect(url_for('full_list'))
+
     return render_template('7_add_baby.html', title='Add baby to list')
+
 
 @app.route('/full_list')
 def full_list():
     return render_template('8_full_list.html', title='Full list of babies on NICU')
 
+@app.route('/ROP_baby_db')
+def all_babies_from_db():
+    all_babies_from_db = get_babies()
+    # print(people_from_db)
+    return render_template('full_list.html', babies=babies_from_db, title='Database Babies')
 @app.route('/this_weeks_screens')
 def this_weeks_screens():
     return render_template('9_this_weeks_screens.html', title='List of babies for screening this week')

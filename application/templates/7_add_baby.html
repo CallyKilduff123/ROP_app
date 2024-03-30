@@ -1,4 +1,48 @@
 {% extends "layout.html" %}
 {% block body_content %}
+<br>
+<br>
+<div class="center-text">
+<p>Please enter baby's firstname, lastname, gender, date of birth, gestational age at birth (weeks),
+    gestational age at birth (days) and birthweight (grams)</p>
+</div>
+<br>
+<br>
+
+<section style="width: 100%; max-width: 500px; margin: auto;">
+    <form action="/add_baby" method="post">
+        <div style="margin-bottom: 10px;">
+            <input type="text" name="firstname" placeholder="Firstname" required style="width: 100%;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="text" name="lastname" placeholder="Lastname" required style="width: 100%;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <select name="gender" required style="width: 100%;">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="date" name="date_of_birth" placeholder="DOB" required style="width: 100%;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="number" name="gestational_age_at_birth_weeks" placeholder="Gestational Age at Birth (weeks)" min="0" required style="width: 100%;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="number" name="gestational_age_at_birth_days" placeholder="Gestational Age at Birth (days)" min="0" max="6" required style="width: 100%;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="number" name="birthweight_grams" placeholder="Birthweight (grams)" min="0" required style="width: 100%;">
+        </div>
+        <br>
+        <button class="btn btn-secondary" type="submit" style="width: 100%;">Add Baby</button>
+    </form>
+    <br>
+    <br>
+    <a href="/healthcare_homepage" style="display: block; text-align: center; margin-top: 10px;">Back to Healthcare Team Homepage</a>
+</section>
+
 
 {% endblock %}
