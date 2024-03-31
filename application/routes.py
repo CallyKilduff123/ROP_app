@@ -1,7 +1,7 @@
 
 from flask import url_for, render_template, request, redirect, session
 from datetime import datetime, timedelta
-from application.data_access import add_baby_to_db
+from application.data_access import add_baby_to_db, get_babies, remove_baby_by_id
 
 from application import app
 
@@ -147,20 +147,29 @@ def add_baby():
                  gestational_age_at_birth_days, birthweight_grams)
 
         # Redirect to the baby list page after adding a new baby
-        return redirect(url_for('full_list'))
+        return redirect(url_for('all_babies_from_db'))
 
     return render_template('7_add_baby.html', title='Add baby to list')
 
 
-@app.route('/full_list')
-def full_list():
-    return render_template('8_full_list.html', title='Full list of babies on NICU')
+# @app.route('/full_list')
+# def full_list():
+#     return render_template('8_full_list.html', title='Full list of babies on NICU')
 
-@app.route('/ROP_baby_db')
+@app.route('/all_babies_from_db')
 def all_babies_from_db():
-    all_babies_from_db = get_babies()
+    babies_from_db = get_babies()
     # print(people_from_db)
-    return render_template('full_list.html', babies=babies_from_db, title='Database Babies')
+    return render_template('8_full_list.html', babies=babies_from_db, title='Full list of babies on NICU')
+
+
+@app.route('/remove_baby', methods=['POST'])
+def remove_baby():
+    baby_id = request.form.get('baby_id')
+    remove_baby_by_id(baby_id)
+    return redirect(url_for('all_babies_from_db'))
+
+
 @app.route('/this_weeks_screens')
 def this_weeks_screens():
     return render_template('9_this_weeks_screens.html', title='List of babies for screening this week')

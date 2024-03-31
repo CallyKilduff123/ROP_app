@@ -51,17 +51,26 @@ def get_babies():
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    sql = ("Select baby_id, firstname, lastname, date_of_birth, gestational_age_at_birth_in_weeks, "
-           "gestational_age_at_birth_in_days and birthweight_grams from baby")
+    sql = ("Select baby_id, firstname, lastname, date_of_birth, gender, gestational_age_at_birth_weeks, "
+           "gestational_age_at_birth_days, birthweight_grams from baby")
     cursor.execute(sql)
 
     result_set = cursor.fetchall()
     baby_list = []
     for baby in result_set:
         baby_list.append({'ID': baby[0], 'Firstname': baby[1], 'Lastname': baby[2], 'Gender': baby[3],
-                          'Date of Birth': baby[4], 'Gestational Age (weeks)': baby[5],
-                          'Gestational Age (days)': baby[6], 'Birthweight (grams)': baby[7]})
+                          'Date of Birth': baby[4], 'Gestational Age at Birth (weeks)': baby[5],
+                          'Gestational Age at Birth (days)': baby[6], 'Birthweight (grams)': baby[7]})
+    print(baby_list)
     return baby_list
+
+
+def remove_baby_by_id(baby_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    sql = "DELETE FROM baby WHERE baby_id = %s"
+    cursor.execute(sql, (baby_id,))
+    conn.commit()
 
 
 # if __name__ == "__main__":

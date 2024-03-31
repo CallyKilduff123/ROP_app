@@ -4,18 +4,48 @@
     <div class="row strong">
         <div class="col-sm">Firstname</div>
         <div class="col-sm">Lastname</div>
+        <div class="col-sm">Gender</div>
+        <div class="col-sm">Date of Birth</div>
+        <div class="col-sm">Gestational Age at Birth (weeks)</div>
+        <div class="col-sm">Gestational Age at Birth (days)</div>
+        <div class="col-sm">Birthweight (grams)</div>
+
     </div>
     <hr>
-    {% for baby in people %}
+    {% for baby in babies %}
     <div class="row">
         <div class="col-sm">
-    <p>{{person.Firstname}}</p>
+    <p>{{baby['Firstname']}}</p>
         </div>
         <div class="col-sm">
-    <p><strong>{{ person.Lastname }}</strong></p>
+    <p>{{ baby['Lastname']}}</p>
                 </div>
+        <div class="col-sm">
+    <p>{{ baby['Gender']}}</p>
+                </div>
+        <div class="col-sm">
+    <p>{{ baby['Date of Birth']}}</p>
+                </div>
+        <div class="col-sm">
+    <p>{{ baby['Gestational Age at Birth (weeks)']}}</p>
+                </div>
+        <div class="col-sm">
+    <p>{{ baby['Gestational Age at Birth (days)']}}</p>
+                </div>
+        <div class="col-sm">
+    <p>{{ baby['Birthweight (grams)']}}</p>
+                </div>
+
+ <form action="/remove_baby" method="POST" style="display: inline;">
+        <input type="hidden" name="baby_id" value="{{ baby['ID'] }}">
+        <button type="submit">Remove</button>
+    </form>
        <hr>
     </div>
     {% endfor %}
  </section>
+
+<br>
+    <br>
+    <a href="/healthcare_homepage" style="display: block; text-align: center; margin-top: 10px;">Back to Healthcare Team Homepage</a>
 {% endblock %}
