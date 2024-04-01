@@ -3,4 +3,67 @@
 <br>
     <br>
     <a href="/healthcare_homepage" style="display: block; text-align: center; margin-top: 10px;">Back to Healthcare Team Homepage</a>
+
+  </div>
+<!--ADDING Zones as names and then diagrams and names below-->
+
+        <h2>Zone 1</h2>
+        <a href="/zone1" style="display: block; text-align: center;">View Zone 1</a>
+    </div>
+    <br>
+    <div>
+        <h2>Zone 2</h2>
+        <a href="/zone2" style="display: block; text-align: center;">View Zone 2</a>
+    </div>
+    <br>
+    <div>
+        <h2>Zone 3</h2>
+        <a href="/zone3" style="display: block; text-align: center;">View Zone 3</a>
+    </div>
+
+
+
+<!--Trying to be creative and utilise lightbulb technique-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Toggle</title>
+</head>
+<body>
+
+<h2>Toggle Images</h2>
+
+<p>Click buttons to toggle images.</p>
+
+<button onclick="toggleZoneImages()">Toggle Zones</button>
+<img id="zone1" src="static/zone1_off.jpg" style="width:100px">
+<img id="zone2" src="static/zone2_off.jpg" style="width:100px">
+<img id="zone3" src="static/zone3_off.jpg" style="width:100px">
+
+<script>
+var zonesOn = false;
+
+function toggleZoneImages() {
+    var zone1 = document.getElementById('zone1');
+    var zone2 = document.getElementById('zone2');
+    var zone3 = document.getElementById('zone3');
+
+    if (zonesOn) {
+        zone1.src = "static/zone1_off.jpg";
+        zone2.src = "static/zone2_off.jpg";
+        zone3.src = "static/zone3_off.jpg";
+    } else {
+        zone1.src = "static/zone1_on.jpg";
+        zone2.src = "static/zone2_on.jpg";
+        zone3.src = "static/zone3_on.jpg";
+    }
+
+    zonesOn = !zonesOn;
+}
+</script>
+
+</body>
+</html>
+
 {% endblock %}
