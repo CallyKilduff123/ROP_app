@@ -71,4 +71,39 @@ body {
             align-items: center;
 }
 
+.centered-zone-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px); /* Adjusted to consider navbar's height */
+    margin-top: 100px; /* Adjust this value if your navbar height is different */
+}
 
+.rounded-zone-img {
+    border-radius: 20px; /* Adjust for desired roundness */
+    max-width: 50%; /* Make the image smaller */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space below the image */
+}
+
+
+/* styles.css */
+.download-button {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove border */
+    color: white; /* Text color */
+    padding: 15px 32px; /* Padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Text size */
+    margin: 4px 2px;
+    cursor: pointer; /* Change cursor on hover */
+    border-radius: 12px; /* Rounded corners */
+    transition-duration: 0.4s; /* Smooth transition for hover effect */
+}
+
+.download-button:hover {
+    background-color: #45a049; /* Darker shade of green */
+    color: white;
+}

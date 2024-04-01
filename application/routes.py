@@ -174,6 +174,22 @@ def remove_baby():
 def this_weeks_screens():
     return render_template('9_this_weeks_screens.html', title='List of babies for screening this week')
 
+
 @app.route('/screen_baby')
 def screen_baby():
     return render_template('10_screen_baby.html', title='Screen Baby Now')
+
+
+@app.route('/zone1')
+def zone1():
+    return render_template('11_zone1.html')
+
+
+@app.route('/zone2')
+def zone2():
+    return render_template('11b_zone2.html')
+
+
+@app.route('/zone3')
+def zone3():
+    return render_template('11c_zone3.html')
