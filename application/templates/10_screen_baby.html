@@ -29,16 +29,19 @@
 <html>
 <body>
 
-<h2>What Can JavaScript Do?</h2>
+<h2>The Different Zones</h2>
 
-<p>JavaScript can change HTML attribute values.</p>
+<p>Toggle through Zone 1, Zone 2 & Zone 3 below.</p>
 
-<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+<p>Zone 1 is defined as the circle, the radius of which is twice the distance between the center of optic disc and center of macula. Zone 2 is defined as the area from the edge of the zone 1 peripherally to a point tangential to the nasal ora serrata. Zone 3 is the residual temporal crescent of retina anterior to zone 2.</p>
 
-<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Zone 1</button>
 
-<img src="{{ url_for('static', filename='images/zone_1.jpeg') }}" class="card-img-top" alt="zone1">
-<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+<img id="zone 1" src="{{ url_for('static', filename='images/zone_1.jpeg') }}" style="width:100px">
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Zone 2</button>
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Zone 3</button>
 
 </body>
 </html>
