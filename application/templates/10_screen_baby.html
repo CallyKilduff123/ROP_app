@@ -1,5 +1,10 @@
 {% extends "layout2.html" %}
 {% block body_content %}
+
+
+<!--VERY SIMPLE PAGE WHICH HAS THE LINKS TO THE IMAGES NEXT TO THE ZONE NAMES-->
+
+
 <!--<br>-->
 <!--    <br>-->
 <!--    <a href="/healthcare_homepage" style="display: block; text-align: center; margin-top: 10px;">Back to Healthcare Team Homepage</a>-->
@@ -40,8 +45,10 @@
 <img id="zone 1" src="{{ url_for('static', filename='images/zone_1.jpeg') }}" style="width:100px">
 
 <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Zone 2</button>
+<img id="zone 2" src="{{ url_for('static', filename='images/zone_2.jpeg') }}" style="width:100px">
 
 <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Zone 3</button>
+<img id="zone 3" src="{{ url_for('static', filename='images/zone_3.jpeg') }}" style="width:100px">
 
 </body>
 </html>
