@@ -1,4 +1,5 @@
 import mysql.connector
+from datetime import datetime
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -72,6 +73,30 @@ def remove_baby_by_id(baby_id):
     cursor.execute(sql, (baby_id,))
     conn.commit()
 
+
+def get_this_weeks_screens():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)  # Use `dictionary=True` for results as dictionaries
+    cursor.callproc('CalculatePMAandPNAandFirstScreenDate')
+
+    # Initialize an empty list for babies
+    babies = []
+
+    # Fetch the results of the stored procedure
+    for result in cursor.stored_results():
+        babies = result.fetchall()
+
+    # cursor.close()
+    # conn.close()
+
+    # Filter babies by screen date between 1st and 8th April 2024
+    start_date = datetime.strptime('2024-04-01', '%Y-%m-%d').date()
+    end_date = datetime.strptime('2024-04-08', '%Y-%m-%d').date()
+
+    filtered_babies = [baby for baby in babies if start_date <= baby['first_screen_date'] <= end_date]
+    # filtered_babies = [baby for baby in babies if start_date <= datetime.strptime(baby['first_screen_date'], '%Y-%m-%d').date() <= end_date]
+
+    return filtered_babies
 
 # if __name__ == "__main__":
 #     main()

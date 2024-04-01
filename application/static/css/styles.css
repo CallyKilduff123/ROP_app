@@ -107,3 +107,15 @@ body {
     background-color: #45a049; /* Darker shade of green */
     color: white;
 }
+
+ zone-thumbnail-img {
+            max-width: 100%; /* Makes images responsive */
+            height: auto;
+            display: block; /* Prevents inline gaps */
+            margin: 0 auto; /* Centers images */
+        }
+zone-thumbnail-button {
+            display: block; /* Each button on its own line */
+            width: 100%; /* Full width */
+            margin: 10px 0; /* Spacing around buttons */
+        }

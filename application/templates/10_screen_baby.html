@@ -30,16 +30,14 @@
 
 <!--Trying to be creative and utilise lightbulb technique-->
 
-<!DOCTYPE html>
-<html>
-<body>
+
 
 <h2>The Different Zones</h2>
 
 <p>Toggle through Zone 1, Zone 2 & Zone 3 below.</p>
 
 <p>Zone 1 is defined as the circle, the radius of which is twice the distance between the center of optic disc and center of macula. Zone 2 is defined as the area from the edge of the zone 1 peripherally to a point tangential to the nasal ora serrata. Zone 3 is the residual temporal crescent of retina anterior to zone 2.</p>
-
+<br>
 <!--<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Zone 1</button>-->
 <button onclick="window.location.href='/zone1';">Zone 1</button>
 
@@ -53,10 +51,6 @@
 <!--<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Zone 3</button>-->
 <button onclick="window.location.href='/zone3';">Zone 3</button>
 <img id="zone 3" src="{{ url_for('static', filename='images/zone_3.jpeg') }}" style="width:100px">
-
-</body>
-</html>
-
 
 
 {% endblock %}

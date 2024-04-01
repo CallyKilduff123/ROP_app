@@ -1,5 +1,99 @@
 {% extends "layout2.html" %}
 {% block body_content %}
+
+<section>
+    <div class="row strong">
+        <div class="col-sm">Firstname</div>
+        <div class="col-sm">Lastname</div>
+        <div class="col-sm">Gender</div>
+        <div class="col-sm">Date of Birth</div>
+        <div class="col-sm">Gestational Age at Birth (weeks)</div>
+        <div class="col-sm">Gestational Age at Birth (days)</div>
+        <div class="col-sm">Postnatal age (weeks)</div>
+        <div class="col-sm">Postnatal age (days)</div>
+        <div class="col-sm">Postmenstrual age (weeks)</div>
+        <div class="col-sm">Postmenstrual age (days)</div>
+        <div class="col-sm">First ROP screen due</div>
+    </div>
+    <hr>
+    {% for baby in babies %}
+    <div class="row">
+        <div class="col-sm"><p>{{ baby['firstname'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['lastname'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['gender'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['date_of_birth'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['gestational_age_at_birth_weeks'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['gestational_age_at_birth_days'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['postnatal_age_weeks'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['postnatal_age_days'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['pma_weeks'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['pma_days'] }}</p></div>
+        <div class="col-sm"><p>{{ baby['first_screen_date'] }}</p></div>
+    </div>
+    <hr>
+    {% endfor %}
+</section>
+
+<!--<section>-->
+<!--    <div class="row strong">-->
+<!--        <div class="col-sm">Firstname</div>-->
+<!--        <div class="col-sm">Lastname</div>-->
+<!--        <div class="col-sm">Gender</div>-->
+<!--        <div class="col-sm">Date of Birth</div>-->
+<!--        <div class="col-sm">Gestational Age at Birth (weeks)</div>-->
+<!--        <div class="col-sm">Gestational Age at Birth (days)</div>-->
+<!--        <div class="col-sm">Postnatal age (weeks)</div>-->
+<!--        <div class="col-sm">Postnatal age (days)</div>-->
+<!--        <div class="col-sm">Postmenstrual age (weeks)</div>-->
+<!--        <div class="col-sm">Postmenstrual age (days)</div>-->
+<!--        <div class="col-sm">First ROP screen due</div>-->
+
+<!--    </div>-->
+<!--    <hr>-->
+<!--    {% for baby in babies %}-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm">-->
+<!--    <p>{{baby['firstname']}}</p>-->
+<!--        </div>-->
+<!--        <div class="col-sm">-->
+<!--    <p>{{ baby['lastname']}}</p>-->
+<!--                </div>-->
+<!--        <div class="col-sm">-->
+<!--    <p>{{ baby['gender']}}</p>-->
+<!--                </div>-->
+<!--        <div class="col-sm">-->
+<!--    <p>{{ baby['date_of_birth']}}</p>-->
+<!--                </div>-->
+<!--        <div class="col-sm">-->
+<!--    <p>{{ baby['gestational_age_at_birth_weeks']}}</p>-->
+<!--                </div>-->
+<!--        <div class="col-sm">-->
+<!--    <p>{{ baby['gestational_age_at_birth_days']}}</p>-->
+<!--                </div>-->
+<!--      <p>{{ baby['postnatal_age_weeks']}}</p>-->
+<!--                </div>-->
+<!--        <div class="col-sm">-->
+<!--    <p>{{ baby['postnatal_age_days']}}</p>-->
+<!--                </div>-->
+<!--       <p>{{ baby['pma_weeks']}}</p>-->
+<!--                </div>-->
+<!--        <div class="col-sm">-->
+<!--    <p>{{ baby['pma_days']}}</p>-->
+<!--                </div>-->
+<!--     <div class="col-sm">-->
+<!--    <p>{{ baby['first_screen_date']}}</p>-->
+<!--                </div>-->
+
+
+<!-- <form action="/remove_baby" method="POST" style="display: inline;">-->
+<!--        <input type="hidden" name="baby_id" value="{{ baby['ID'] }}">-->
+<!--        <button type="submit">Remove</button>-->
+<!--    </form>-->
+<!--       <hr>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!-- </section>-->
+
 <br>
     <br>
     <a href="/healthcare_homepage" style="display: block; text-align: center; margin-top: 10px;">Back to Healthcare Team Homepage</a>
