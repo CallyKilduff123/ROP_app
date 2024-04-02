@@ -1,7 +1,7 @@
 
 from flask import url_for, render_template, request, redirect, session
 from datetime import datetime, timedelta
-from application.data_access import add_baby_to_db, get_babies, remove_baby_by_id, get_this_weeks_screens, get_baby
+from application.data_access import add_baby_to_db, get_babies, get_this_weeks_screens, get_baby
 
 from application import app
 
@@ -115,12 +115,19 @@ def template():
 #     return render_template('5_login.html', title='Healthcare Team Secure Login')
 
 @app.route('/login', methods=['GET', 'POST'])
+# Flask Route Decoration: @app.route('/login', methods=['GET', 'POST']) is a decorator
+# tells Flask to execute the login function whenever a web browser requests the URL /login on this web application.
 def login():
     # app.logger.debug("Start of login")
     if request.method == 'POST':
+        # It retrieves the user's email address from the form data submitted
+        # and stores it in the user's session under the key email.
+        # A session is a way to store information (in variables) to be used across multiple pages.
         session['email'] = request.form['email']
-        # app.logger.debug("Username is: " + session['username'])
+        # set a session variable loggedIn to True, indicating that the user is now logged in.
         session['loggedIn'] = True
+        # sets the user's role in the session -
+        # can be used to control access to different parts of the website based on the user's role.
         session['role'] = 'Healthcare Team'
         return redirect(url_for('healthcare_homepage'))
     return render_template('5_login.html', title="Healthcare Team Secure Login")
@@ -141,8 +148,9 @@ def add_baby():
         gestational_age_at_birth_weeks = request.form['gestational_age_at_birth_weeks']
         gestational_age_at_birth_days = request.form['gestational_age_at_birth_days']
         birthweight_grams = request.form['birthweight_grams']
-
-        # Call add_baby from data_access.py to insert the new baby into the database
+        # If it is a POST request, the function proceeds to extract the submitted form data using request.form[name of field]
+        # where [name] is the name attribute of an input field in the form.
+        # Call add_baby from data_access.py to insert the new baby into the database, pass the parameters exactly like the table
         add_baby_to_db(firstname, lastname, gender, date_of_birth, gestational_age_at_birth_weeks,
                  gestational_age_at_birth_days, birthweight_grams)
 
@@ -158,16 +166,17 @@ def add_baby():
 
 @app.route('/all_babies_from_db')
 def all_babies_from_db():
+    # calls get_babies function from data access file and passes details to the template full_list
     babies_from_db = get_babies()
     # print(people_from_db)
     return render_template('8_full_list.html', babies=babies_from_db, title='Full list of babies on NICU')
 
 
-@app.route('/remove_baby', methods=['POST'])
-def remove_baby():
-    baby_id = request.form.get('baby_id')
-    remove_baby_by_id(baby_id)
-    return redirect(url_for('all_babies_from_db'))
+# @app.route('/remove_baby', methods=['POST'])
+# def remove_baby():
+#     baby_id = request.form.get('baby_id')
+#     remove_baby_by_id(baby_id)
+#     return redirect(url_for('all_babies_from_db'))
 
 
 # @app.route('/this_weeks_screens')
@@ -176,13 +185,18 @@ def remove_baby():
 
 @app.route('/this_weeks_screens')
 def this_weeks_screens():
-    babies = get_this_weeks_screens()  # Call the function from data_access.py
+    # Call the function from data_access.py (ensure imported at top of the page)
+    babies = get_this_weeks_screens()
     return render_template('9_this_weeks_screens.html', title='List of babies for screening this week', babies=babies)
 
 
 @app.route('/baby-details/<int:baby_id>')
 def baby_details(baby_id):
-    baby = get_baby(baby_id)  # Fetch baby details
+    # function takes 1 parameter - baby_id and it must be an int
+    # Flask captures the number as the baby's ID, fetches details about the baby from database via get baby using ID,
+    # and then displays those details on a webpage using a specified template.
+    baby = get_baby(baby_id)
+    # Fetch baby details from data_access.py function
     return render_template('9b_baby_details.html', baby=baby)
 
 
