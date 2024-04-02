@@ -1,0 +1,21 @@
+{% extends "layout2.html" %}
+{% block body_content %}
+<p><strong>Firstname:</strong> {{ baby['firstname'] }}</p>
+    <p><strong>Lastname:</strong> {{ baby['lastname'] }}</p>
+    <p><strong>Gender:</strong> {{ baby['gender'] }}</p>
+    <p><strong>Date of Birth:</strong> {{ baby['date_of_birth'] }}</p>
+<!--    <p><strong>Gestational Age:</strong> {{ baby['gestational_age_weeks'] }} weeks, {{ baby['gestational_age_days'] }} days</p>-->
+<!--    <p><strong>Postmenstrual Age:</strong> {{ baby['postmenstrual_age_weeks'] }} weeks, {{ baby['postmenstrual_age_days'] }} days</p>-->
+<!--    <p><strong>Postnatal Age:</strong> {{ baby['postnatal_age_weeks'] }} weeks, {{ baby['postnatal_age_days'] }} days</p>-->
+<!--    <p><strong>Birthweight:</strong> {{ baby['birthweight'] }} grams</p>-->
+<!--    <p><strong>Date of First Screen:</strong> {{ baby['first_screen_date'] }}</p>-->
+
+<!-- ROP Present Button -->
+<!-- Assuming this triggers a form submission or a JavaScript action -->
+<button type="button" class="btn btn-danger" id="ropPresent">ROP Present</button>
+
+<!-- ROP Absent Button -->
+<!-- This directly links to 10_screen_baby.html -->
+<a href="{{ url_for('screen_baby') }}" class="btn btn-success" id="ropAbsent">ROP Absent</a>
+
+{% endblock %}

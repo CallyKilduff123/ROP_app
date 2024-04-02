@@ -36,10 +36,10 @@
     <p>{{ baby['Birthweight (grams)']}}</p>
                 </div>
 
- <form action="/remove_baby" method="POST" style="display: inline;">
-        <input type="hidden" name="baby_id" value="{{ baby['ID'] }}">
-        <button type="submit">Remove</button>
-    </form>
+<!-- <form action="/remove_baby" method="POST" style="display: inline;">-->
+<!--        <input type="hidden" name="baby_id" value="{{ baby['ID'] }}">-->
+<!--        <button type="submit">Remove</button>-->
+<!--    </form>-->
        <hr>
     </div>
     {% endfor %}
@@ -48,4 +48,6 @@
 <br>
     <br>
     <a href="/healthcare_homepage" style="display: block; text-align: center; margin-top: 10px;">Back to Healthcare Team Homepage</a>
+<a href="/this_weeks_screens" style="display: block; text-align: center; margin-top: 10px;">Babies To Be Screened This Week</a>
+
 {% endblock %}

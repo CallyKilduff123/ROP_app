@@ -1,7 +1,7 @@
 
 from flask import url_for, render_template, request, redirect, session
 from datetime import datetime, timedelta
-from application.data_access import add_baby_to_db, get_babies, remove_baby_by_id, get_this_weeks_screens
+from application.data_access import add_baby_to_db, get_babies, remove_baby_by_id, get_this_weeks_screens, get_baby
 
 from application import app
 
@@ -174,10 +174,17 @@ def remove_baby():
 # def this_weeks_screens():
 #     return render_template('9_this_weeks_screens.html', title='List of babies for screening this week')
 
-@app.route('/this-weeks-screens')
+@app.route('/this_weeks_screens')
 def this_weeks_screens():
     babies = get_this_weeks_screens()  # Call the function from data_access.py
     return render_template('9_this_weeks_screens.html', title='List of babies for screening this week', babies=babies)
+
+
+@app.route('/baby-details/<int:baby_id>')
+def baby_details(baby_id):
+    baby = get_baby(baby_id)  # Fetch baby details
+    return render_template('9b_baby_details.html', baby=baby)
+
 
 @app.route('/screen_baby')
 def screen_baby():

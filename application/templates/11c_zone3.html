@@ -11,7 +11,25 @@
     </a>
 </div>
 <br>
-    <br>
+<div style="text-align: center;">
+<p id="screeningDate">Screen baby again in 2 weeks on <span id="dateTwoWeeks"></span>.</p>
+</div>
+<script>
+    // Calculate the date two weeks from now
+    var today = new Date();
+    var nextTwoWeeks = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 14);
+
+    // Format the date as you like; here's a simple example: YYYY-MM-DD
+    var dateString = nextTwoWeeks.getFullYear() + '-' +
+                     (nextTwoWeeks.getMonth() + 1).toString().padStart(2, '0') + '-' +
+                     nextTwoWeeks.getDate().toString().padStart(2, '0');
+
+    // Insert the date into the paragraph
+    document.getElementById('dateTwoWeeks').textContent = dateString;
+</script>
+
+<!--<br>-->
+<!--    <br>-->
     <a href="/screen_baby" style="display: block; text-align: center; margin-top: 10px;">Back</a>
 
 

@@ -18,7 +18,10 @@
     <hr>
     {% for baby in babies %}
     <div class="row">
-        <div class="col-sm"><p>{{ baby['firstname'] }}</p></div>
+        <div class="col-sm">
+            <a href="{{ url_for('baby_details', baby_id=baby['baby_id']) }}" class="btn btn-primary">{{ baby['firstname'] }}</a>
+        </div>
+<!--        <div class="col-sm"><p>{{ baby['firstname'] }}</p></div>-->
         <div class="col-sm"><p>{{ baby['lastname'] }}</p></div>
         <div class="col-sm"><p>{{ baby['gender'] }}</p></div>
         <div class="col-sm"><p>{{ baby['date_of_birth'] }}</p></div>
@@ -97,4 +100,6 @@
 <br>
     <br>
     <a href="/healthcare_homepage" style="display: block; text-align: center; margin-top: 10px;">Back to Healthcare Team Homepage</a>
+<a href="/screen_baby" style="display: block; text-align: center; margin-top: 10px;">Screen Baby Now</a>
+
 {% endblock %}

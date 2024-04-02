@@ -66,6 +66,14 @@ def get_babies():
     return baby_list
 
 
+def get_baby(baby_id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM baby WHERE baby_id = %s", (baby_id,))
+    baby = cursor.fetchone()
+    return baby
+
+
 def remove_baby_by_id(baby_id):
     conn = get_db_connection()
     cursor = conn.cursor()
